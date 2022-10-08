@@ -133,7 +133,7 @@ function App() {
                 resolution={256}
                 color="#000000"
             />
-            <primitive object={new THREE.AxesHelper(10)} />
+            {/* <primitive object={new THREE.AxesHelper(10)} /> */}
             <OrbitControls
                 minPolarAngle={Math.PI / 3}
                 maxPolarAngle={Math.PI / 3}
