@@ -13,6 +13,7 @@ const Frame = (props) => {
         delay: props.hover ? 200 : 300,
         position: [props.position[0], props.position[1] * yFactor, props.position[2]],
     });
+    const color = hover ? "skyblue" : "lightblue";
     return (
         <a.group
             onPointerOver={(e) => {
@@ -30,11 +31,11 @@ const Frame = (props) => {
         >
             <mesh castShadow position={[0, 0.3, 0]}>
                 <boxGeometry args={[1.3, 0.1, 0.1]} />
-                <meshStandardMaterial color="lightblue" />
+                <meshStandardMaterial color={color}  />
             </mesh>
             <mesh castShadow position={[0, 0, 0]}>
                 <boxGeometry args={[1.2, 0.6, 0.05]} />
-                <meshStandardMaterial color="lightblue" />
+                <meshStandardMaterial color={color} />
             </mesh>
         </a.group>
     );
@@ -90,7 +91,7 @@ const Base = (props) => {
     return (
         <a.mesh castShadow position={position}>
             <boxGeometry args={[1.75, 0.2, 2.2]} />
-            <meshStandardMaterial color="gold" />
+            <meshStandardMaterial color="khaki" />
         </a.mesh>
     );
 };
