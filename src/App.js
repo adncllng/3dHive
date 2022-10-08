@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, ContactShadows, SpotLight } from "@react-three/drei";
@@ -132,12 +133,13 @@ function App() {
                 resolution={256}
                 color="#000000"
             />
+            <primitive object={new THREE.AxesHelper(10)} />
             <OrbitControls
                 minPolarAngle={Math.PI / 3}
                 maxPolarAngle={Math.PI / 3}
                 enableZoom={false}
             />
-            <Hive scale={0.5} position={[0, 0.2, -0.75]} />
+            <Hive scale={0.5} position={[0, 0.2, -.36]} />
             <Environment preset="city" />
         </Canvas>
     );
