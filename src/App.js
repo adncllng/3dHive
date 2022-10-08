@@ -20,8 +20,10 @@ const Frame = (props) => {
                 setHover(true);
                 props.setHover(true);
             }}
-            onPointerOut={() => {
+            onPointerOut={(e) => {
+                e.stopPropagation();
                 setHover(false);
+                props.setHover(false);
             }}
             {...props}
             position={position}
@@ -102,7 +104,8 @@ const Hive = (props) => {
     return (
         <a.group
             scale={scale}
-            onPointerOver={() => {
+            onPointerOver={(e) => {
+                e.stopPropagation();
                 setHover(true);
             }}
             onPointerOut={() => {
