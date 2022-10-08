@@ -1,7 +1,16 @@
 import * as THREE from "three";
 import { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, useScroll, ScrollControls, PresentationControls, OrbitControls } from "@react-three/drei";
+import {
+    Environment,
+    useScroll,
+    ScrollControls,
+    PresentationControls,
+    OrbitControls,
+    ContactShadows,
+    RandomizedLight,
+    AccumulativeShadows,
+} from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
 const colors = ["red", "gold", "teal"];
@@ -76,19 +85,19 @@ const Box = (props) => {
         <a.group ref={ref} scale={1} position={position}>
             <mesh castShadow position={[0.75, 0.5, 0.75]}>
                 <boxGeometry args={[0.1, 0.75, 1.8]} />
-                <meshStandardMaterial color="gold" />
+                <meshStandardMaterial color="khaki" />
             </mesh>
             <mesh castShadow position={[-0.75, 0.5, 0.75]}>
                 <boxGeometry args={[0.1, 0.75, 1.8]} />
-                <meshStandardMaterial color="gold" />
+                <meshStandardMaterial color="khaki" />
             </mesh>
             <mesh castShadow position={[-0.0, 0.5, 1.7]} rotation={[0, Math.PI / 2, 0]}>
                 <boxGeometry args={[0.1, 0.75, 1.6]} />
-                <meshStandardMaterial color="gold" />
+                <meshStandardMaterial color="khaki" />
             </mesh>
             <mesh castShadow position={[0, 0.5, -0.2]} rotation={[0, Math.PI / 2, 0]}>
                 <boxGeometry args={[0.1, 0.75, 1.6]} />
-                <meshStandardMaterial color="gold" />
+                <meshStandardMaterial color="khaki" />
             </mesh>
             {Array(11)
                 .fill()
@@ -130,7 +139,7 @@ const Base = (props) => {
         </a.mesh>
     );
 };
-const Hive = () => {
+const Hive = (props) => {
     const ref = useRef();
     // const scroll = useScroll();
     // useFrame((state, delta) => {
@@ -149,14 +158,14 @@ const Hive = () => {
             onPointerOut={() => {
                 setHover(false);
             }}
-            position={[0, 1, 2.5]}
+            position={props.position}
             ref={ref}
         >
-            <Base hover={hover} position={[0, 2.6, 0]} />
+            <Base hover={hover} position={[0, 2.6, 0.75]} />
             <Box hover={hover} position={[0, 0.1, 0]} />
             <Box hover={hover} position={[0, 0.9, 0]} />
             <Box hover={hover} position={[0, 1.7, 0]} />
-            <Base hover={hover} position={[0, 0.1, 0]} />
+            <Base hover={hover} position={[0, 0.1, 0.75]} />
         </a.group>
     );
 };
@@ -174,13 +183,15 @@ function App() {
                 horizontal={false} // Can also scroll horizontally (default: false)
                 infinite={false} // Can also scroll infinitely (default: false)
             > */}
-                     <primitive object={new THREE.AxesHelper(10)} />
-                   <OrbitControls
-                   minPolarAngle = {Math.PI/3}
-                   maxPolarAngle = {Math.PI/3}
-                   />
-                <Hive />
-                <Environment preset="city" />
+          <ContactShadows opacity={.5} scale={10} blur={5} far={100} resolution={256} color="#000000" />
+            {/* <primitive object={new THREE.AxesHelper(10)} /> */}
+            <OrbitControls
+                minPolarAngle={Math.PI / 3}
+                maxPolarAngle={Math.PI / 3}
+                enableZoom={false}
+            />
+            <Hive position={[0, 1, -0.75]} />
+            <Environment preset="city" />
             {/* </ScrollControls> */}
         </Canvas>
     );
