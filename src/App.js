@@ -118,9 +118,19 @@ const Hive = (props) => {
 };
 function App() {
     return (
+        <div
+            style={{
+                background: "white",
+                display: "flex",
+                width: "100vw",
+                height: "100vh",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
         <Canvas
-            style={{ width: "100%", height: "100%", position: "fixed" }}
             shadows
+                    style={{ width: "75%", height: "75%" }}
             camera={{ position: [2.5, 2.5, 2.5], fov: 100 }}
         >
             <ContactShadows
@@ -138,8 +148,24 @@ function App() {
                 enableZoom={false}
             />
             <Hive scale={0.5} position={[0, 0.2, -0.36]} />
-            <Environment preset="city" />
+                    <spotLight
+                        position={[50, 20, 0]}
+                        intensity={0.5}
+                        distance={100}
+                        // angle={Math.PI / 10}
+                        penumbra={1}
+                        castShadow
+                    />
+                    <ambientLight castShadow intensity={0.05} />
+                    <hemisphereLight
+                        castShadow
+                        color="white"
+                        groundColor="pink"
+                        position={[15, 100, 10]}
+                        intensity={0.8}
+                    />
         </Canvas>
+        </div>
     );
 }
 
