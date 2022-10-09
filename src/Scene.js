@@ -1,4 +1,4 @@
-import { OrbitControls, ContactShadows } from "@react-three/drei";
+import { ContactShadows } from "@react-three/drei";
 
 const Scene = () => (
     <>
@@ -15,12 +15,6 @@ const Scene = () => (
             far={500}
             resolution={256}
             color="#000000"
-        />
-        <OrbitControls
-            minPolarAngle={Math.PI / 2.4}
-            maxPolarAngle={Math.PI / 2.4}
-            target={[0, 1, 0]}
-            enableZoom={false}
         />
         <ambientLight intensity={0.05} />
         <hemisphereLight
