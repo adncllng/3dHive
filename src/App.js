@@ -127,7 +127,7 @@ function App() {
         <Canvas
             style={{ width: "100%", height: "100%", position: "fixed" }}
             shadows
-            camera={{ position: [10, 0, 10], fov: 80 }}
+            camera={{ position: [2.5, 2.5, 2.5], fov: 100 }}
         >
             <ContactShadows
                 opacity={0.5}
@@ -143,7 +143,7 @@ function App() {
                 maxPolarAngle={Math.PI / 3}
                 enableZoom={false}
             />
-            <Hive scale={0.5} position={[0, 0.2, -.36]} />
+            <Hive scale={0.5} position={[0, 0.2, -0.36]} />
             <Environment preset="city" />
         </Canvas>
     );
