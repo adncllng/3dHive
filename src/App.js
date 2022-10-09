@@ -170,7 +170,9 @@ function App() {
                         target={[0,1,0]}
                         enableZoom={false}
                     />
+                    <Hive scale={0.5} position={[-1, 0.2, .8]} />
                     <Hive scale={0.5} position={[0, 0.2, -0.36]} />
+                    <Hive scale={0.5} position={[1, 0.2, -1.5]} />
                     <spotLight
                         position={[50, 20, 0]}
                         intensity={0.5}
