@@ -1,7 +1,6 @@
-import * as THREE from "three";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, ContactShadows, SpotLight } from "@react-three/drei";
+import { Environment, OrbitControls, ContactShadows } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
 const FRAME_SPACE = 0.15;
@@ -31,7 +30,7 @@ const Frame = (props) => {
         >
             <mesh castShadow position={[0, 0.3, 0]}>
                 <boxGeometry args={[1.3, 0.1, 0.1]} />
-                <meshStandardMaterial color={color}  />
+                <meshStandardMaterial color={color} />
             </mesh>
             <mesh castShadow position={[0, 0, 0]}>
                 <boxGeometry args={[1.2, 0.6, 0.05]} />
@@ -97,14 +96,9 @@ const Base = (props) => {
 };
 const Hive = (props) => {
     const [hover, setHover] = useState();
-    const { scale } = useSpring({
-        scale: hover ? props.scale * 1.5 : props.scale,
-        delay: hover ? 0 : 500,
-    });
-
     return (
         <a.group
-            scale={scale}
+            scale={props.scale}
             onPointerOver={(e) => {
                 e.stopPropagation();
                 setHover(true);
