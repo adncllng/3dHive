@@ -141,7 +141,7 @@ function App() {
     return (
         <div
             style={{
-                background: "white",
+                background: "honeydew",
                 display: "flex",
                 width: "100vw",
                 height: "100vh",
@@ -152,8 +152,8 @@ function App() {
             <Suspense fallback={<Fallback />}>
                 <Canvas
                     shadows
-                    style={{ width: "75%", height: "75%" }}
-                    camera={{ position: [10, 10, 10], fov: 25,}}
+                    style={{ width: "100%", height: "75%" }}
+                    camera={{ position: [10, 10, 10], fov: 25 }}
                 >
                     <ContactShadows
                         opacity={0.5}
