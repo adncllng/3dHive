@@ -153,7 +153,7 @@ function App() {
                 <Canvas
                     shadows
                     style={{ width: "75%", height: "75%" }}
-                    camera={{ position: [2.5, 2.5, 2.5], fov: 100 }}
+                    camera={{ position: [10, 10, 10], fov: 25,}}
                 >
                     <ContactShadows
                         opacity={0.5}
@@ -167,6 +167,7 @@ function App() {
                     <OrbitControls
                         minPolarAngle={Math.PI / 3}
                         maxPolarAngle={Math.PI / 3}
+                        target={[0,1,0]}
                         enableZoom={false}
                     />
                     <Hive scale={0.5} position={[0, 0.2, -0.36]} />
