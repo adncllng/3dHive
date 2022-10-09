@@ -117,6 +117,17 @@ const Hive = (props) => {
     );
 };
 function App() {
+    const { device, fps, gpu, isMobile, tier, type } = useDetectGPU();
+    const Fallback = () => (
+        <pre maxWidth={200}>
+            device: {device} {"\n"}
+            fps: {fps} {"\n"}
+            gpu: {gpu} {"\n"}
+            isMobile: {isMobile?.toString()} {"\n"}
+            Tier: {tier.toString()} {"\n"}
+            Type: {type} {"\n"}
+        </pre>
+    );
     return (
         <div
             style={{
@@ -128,6 +139,7 @@ function App() {
                 alignItems: "center",
             }}
         >
+            <Suspense fallback={<Fallback />}>
         <Canvas
             shadows
                     style={{ width: "75%", height: "75%" }}
@@ -137,11 +149,11 @@ function App() {
                 opacity={0.5}
                 scale={10}
                 blur={5}
-                far={100}
+                        far={500}
                 resolution={256}
                 color="#000000"
             />
-            {/* <primitive object={new THREE.AxesHelper(10)} /> */}
+
             <OrbitControls
                 minPolarAngle={Math.PI / 3}
                 maxPolarAngle={Math.PI / 3}
@@ -165,6 +177,7 @@ function App() {
                         intensity={0.8}
                     />
         </Canvas>
+            </Suspense>
         </div>
     );
 }
