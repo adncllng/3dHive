@@ -52,19 +52,19 @@ const Box = (props) => {
         <a.group scale={1} position={position}>
             <mesh castShadow position={[0.75, 0.5, 0.75]}>
                 <boxGeometry args={[0.1, 0.75, 1.8]} />
-                <meshStandardMaterial color="khaki" />
+                <meshStandardMaterial color="rgba(250,195,110)" />
             </mesh>
             <mesh castShadow position={[-0.75, 0.5, 0.75]}>
                 <boxGeometry args={[0.1, 0.75, 1.8]} />
-                <meshStandardMaterial color="khaki" />
+                <meshStandardMaterial color="rgba(250,195,110)" />
             </mesh>
             <mesh castShadow position={[-0.0, 0.5, 1.7]} rotation={[0, Math.PI / 2, 0]}>
                 <boxGeometry args={[0.1, 0.75, 1.6]} />
-                <meshStandardMaterial color="khaki" />
+                <meshStandardMaterial color="rgba(250,195,110)" />
             </mesh>
             <mesh castShadow position={[0, 0.5, -0.2]} rotation={[0, Math.PI / 2, 0]}>
                 <boxGeometry args={[0.1, 0.75, 1.6]} />
-                <meshStandardMaterial color="khaki" />
+                <meshStandardMaterial color="rgba(250,195,110)" />
             </mesh>
             {Array(11)
                 .fill()
