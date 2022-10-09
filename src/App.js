@@ -167,10 +167,10 @@ function App() {
                     <OrbitControls
                         minPolarAngle={Math.PI / 3}
                         maxPolarAngle={Math.PI / 3}
-                        target={[0,1,0]}
+                        target={[0, 1, 0]}
                         enableZoom={false}
                     />
-                    <Hive scale={0.5} position={[-1, 0.2, .8]} />
+                    <Hive scale={0.5} position={[-1, 0.2, 0.8]} />
                     <Hive scale={0.5} position={[0, 0.2, -0.36]} />
                     <Hive scale={0.5} position={[1, 0.2, -1.5]} />
                     <spotLight
