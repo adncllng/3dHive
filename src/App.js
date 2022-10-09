@@ -110,7 +110,7 @@ const Hive = (props) => {
                 setHover(true);
             }}
             onClick={(e) => {
-                setHover(!hover);
+                if (isMobile) setHover(!hover);
             }}
             onPointerOut={() => {
                 if (isMobile) return;
