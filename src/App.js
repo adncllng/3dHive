@@ -176,11 +176,9 @@ function App() {
                         distance={100}
                         // angle={Math.PI / 10}
                         penumbra={1}
-                        castShadow
                     />
-                    <ambientLight castShadow intensity={0.05} />
+                    <ambientLight intensity={0.05} />
                     <hemisphereLight
-                        castShadow
                         color="white"
                         groundColor="pink"
                         position={[15, 100, 10]}
