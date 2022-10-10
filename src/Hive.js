@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDetectGPU } from "@react-three/drei";
-import { useSpring, a } from "@react-spring/three";
+import { useSpring, a, config } from "@react-spring/three";
 
 const FRAME_SPACE = 0.15;
 
@@ -9,6 +9,7 @@ const Frame = (props) => {
     const { isMobile } = useDetectGPU();
     const yFactor = (hover ? 1.4 : 1) + (props.hover ? 1.2 : 0);
     const { position } = useSpring({
+        config: config.stiff,
         delay: props.hover ? 200 : 300,
         position: [props.position[0], props.position[1] * yFactor, props.position[2]],
     });
@@ -44,9 +45,10 @@ const Frame = (props) => {
 
 const Box = (props) => {
     const { position } = useSpring({
-        delay: props.hover ? 0 : 500,
+        config: config.stiff,
+        delay: props.hover ? 0 : 800,
         position: props.hover
-            ? [props.position[0], props.position[1] * 2, props.position[2]]
+            ? [props.position[0], props.position[1] * 2.3, props.position[2]]
             : props.position,
     });
 
@@ -83,9 +85,10 @@ const Box = (props) => {
 };
 const Base = (props) => {
     const { position } = useSpring({
-        delay: props.hover ? 0 : 500,
+        config: config.stiff,
+        delay: props.hover ? 0 : 800,
         position: props.hover
-            ? [props.position[0], props.position[1] * 2, props.position[2]]
+            ? [props.position[0], props.position[1] * 2.3, props.position[2]]
             : props.position,
     });
 
