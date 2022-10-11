@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDetectGPU } from "@react-three/drei";
 import { useSpring, a, config } from "@react-spring/three";
+import Bees from "./Bees";
 
 const FRAME_SPACE = 0.15;
 
@@ -13,7 +14,7 @@ const Frame = (props) => {
         delay: props.hover ? 200 : 300,
         position: [props.position[0], props.position[1] * yFactor, props.position[2]],
     });
-    const color = hover ? "skyblue" : "lightblue";
+    const color = hover ? "lightblue" : "khaki";
     return (
         <a.group
             onPointerOver={(e) => {
@@ -103,6 +104,22 @@ const Base = (props) => {
 const Hive = (props) => {
     const { isMobile } = useDetectGPU();
     const [hover, setHover] = useState();
+    const _intervalRef = useRef(null);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        if (hover) {
+            _intervalRef.current = setInterval(() => {
+                setCount((count) => Math.floor(Math.min(count + 5 + count / 20, 100)));
+            }, 200);
+        } else {
+            _intervalRef.current = setInterval(() => {
+                setCount((count) => Math.floor(Math.max(count - 1 - count / 10, 0)));
+            }, 200);
+        }
+        return () => clearInterval(_intervalRef.current);
+    }, [hover]);
+
     return (
         <a.group
             scale={props.scale}
@@ -120,6 +137,14 @@ const Hive = (props) => {
             }}
             position={props.position}
         >
+            {isMobile ? null : (
+                <>
+                    <Bees radiusFactor={1} count={2} speed={2} />
+                    <Bees radiusFactor={2} count={count * 2} speed={4} />
+                    <Bees radiusFactor={5} count={count} speed={4} />
+                    <Bees scale={1.8} radiusFactor={10} count={5} speed={0.1} colors={["black"]} />
+                </>
+            )}
             <Base hover={hover} position={[0, 2.6, 0.75]} />
             <Box hover={hover} setHover={setHover} position={[0, 0.1, 0]} />
             <Box hover={hover} setHover={setHover} position={[0, 0.9, 0]} />

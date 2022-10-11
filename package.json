@@ -16,6 +16,7 @@
     "react-scripts": "5.0.1",
     "react-spring": "^9.5.5",
     "three": "^0.145.0",
+    "threejs-meshline": "^2.0.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

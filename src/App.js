@@ -4,10 +4,10 @@ import { OrbitControls, useDetectGPU } from "@react-three/drei";
 import Hive from "./Hive";
 import Scene from "./Scene";
 
-const Fallback = () => {
+const Fallback = (props) => {
     const { device, fps, gpu, isMobile, tier, type } = useDetectGPU();
     return (
-        <pre maxWidth={200}>
+        <pre {...props}>
             device: {device} {"\n"}
             fps: {fps} {"\n"}
             gpu: {gpu} {"\n"}
@@ -30,10 +30,11 @@ function App() {
                 alignItems: "center",
             }}
         >
+            <Fallback style={{ height: "100%", fontSize: "10px" }} />
             <Suspense fallback={<Fallback />}>
                 <Canvas
                     shadows
-                    style={{ width: "100%", height: "75%" }}
+                    style={{ width: "100%", height: "100%" }}
                     camera={{ position: [10, 10, 10], fov: 25 }}
                 >
                     <OrbitControls
@@ -43,6 +44,7 @@ function App() {
                         enableZoom={false}
                     />
                     <Scene />
+
                     <Hive scale={0.5} position={[-1, 0.2, 0.8]} />
                     <Hive scale={0.5} position={[0, 0.2, -0.36]} />
                     <Hive scale={0.5} position={[1, 0.2, -1.5]} />
