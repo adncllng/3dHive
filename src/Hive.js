@@ -110,11 +110,11 @@ const Hive = (props) => {
     useEffect(() => {
         if (hover) {
             _intervalRef.current = setInterval(() => {
-                setCount((count) => Math.floor(Math.min(count + 5 + count / 20, 100)));
+                setCount((count) => Math.floor(Math.min(count + 5 + count / 2, 20)));
             }, 200);
         } else {
             _intervalRef.current = setInterval(() => {
-                setCount((count) => Math.floor(Math.max(count - 1 - count / 10, 0)));
+                setCount((count) => Math.floor(Math.max(count - 1 - count / 2, 0)));
             }, 200);
         }
         return () => clearInterval(_intervalRef.current);
